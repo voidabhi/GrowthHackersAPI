@@ -11,22 +11,34 @@ Unofficial Python API for Growth Hackers
 import requests
 from bs4 import BeautifulSoup
 
+from utils import get_soup
+
 class GH(object):
     """
-    The class that parses the GH page, and builds up all articles
-    """
+	The class that parses the GH page, and builds up all articles
+    """	
 	
-	def __init__(self):
-		pass
+    def __init__(self):
+		self.more=''
 		
-	def get_posts(self ,trait,limit=15):
-        """
-			Get all posts of given trait ('trending','latest','must read','jobs')
-        """
-		#validate limit
+	def get_posts(self,trait='',limit=15):
+		if limit == None or limit < 1 or limit > 30: #validate limit
+			limit = 15
+			
+		if trait == 'trending' or trait not in ['latest','must-read','discussions','jobs','companies']:
+			trait = ''
+			
+		posts = 0
 		#fetch limit posts from the trait page
+		while posts < limit :
+			soup = get_soup(page=trait)
+			print soup
+			break
+			
 		#pass the soup to post factory object
-		pass
+	
+	def __repr__(self):
+		return '<GH object>'
 		
 		
 		
@@ -50,5 +62,8 @@ class Post(object):
 		pass
 		
 	def __repr__(self):
-		return '<Post : {0}>'.format(self.title)	
+		return '<Post : {0}>'.format(self.title)
+
+if __name__ == '__main__':
+	print GH()
 		
