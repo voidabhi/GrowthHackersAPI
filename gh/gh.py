@@ -59,7 +59,7 @@ class User(object):
 		return User(user_id,name,image_url)
 		
 	def __repr__(self):
-		return '<Author : {0}>'.format(self.user_id)
+		return '<User : {0}>'.format(self.user_id)
 
 class Category(object):
 	"""
@@ -102,7 +102,7 @@ class Comment(object):
 		link= soup.find('span',class_='comment-meta').contents[1].get('href')
 		 # extracting with regexp
 		user_id = soup.find_all('cite',class_='fn')[1].contents[0]
-		user = user_id
+		user = re.sub(r'[(@)]','',user_id)
 		content = soup.find('div','comment-content').find('p').contents[0].strip()
 		votes = soup.find('span',class_='com-score-%s'%cmt_id).contents[0]
 		return Comment(cmt_id,datetime,user,link,content,votes)
@@ -111,4 +111,4 @@ class Comment(object):
 		return '<Comment :#{0}>'.format(self.cmt_id)					
 
 if __name__ == '__main__':
-	print Comment.from_soup(get_soup('how-a-tiny-startup-used-reddit-to-build-an-army-of-1400-ambassadors-and-how-you-can-too/#comment-11694'))
+	print User.from_user_id('ryangum').image_url
