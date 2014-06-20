@@ -1,2 +1,2 @@
 
-BASE_URL = 'http://growthhackers.com/'
+BASE_URL = 'http://growthhackers.com'

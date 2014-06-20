@@ -8,7 +8,7 @@ def get_soup(page=''):
     """
     Returns a bs4 object of the page requested
     """
-    content = requests.get('%s/%s/' % (BASE_URL,page)).text
+    content = requests.get('%s/%s' % (BASE_URL,page)).text
     return BeautifulSoup(content.encode('utf8'))
 
 def get_article_soup(link):
@@ -16,3 +16,9 @@ def get_article_soup(link):
     Returns a bs4 object of the requested article
     """
     return get_soup(link)
+	
+def get_user_soup(user_id=''):
+	"""
+	Returns a bs4 object of the requested user
+	"""
+	return get_soup('member/%s'%user_id)

@@ -11,59 +11,53 @@ Unofficial Python API for Growth Hackers
 import requests
 from bs4 import BeautifulSoup
 
-from utils import get_soup
+from utils import get_soup , get_user_soup
 
 class GH(object):
-    """
-	The class that parses the GH page, and builds up all articles
-    """	
-	
-    def __init__(self):
-		self.more=''
+		"""
+		The class that parses the GH page, and builds up all articles
+		"""	
 		
-	def get_posts(self,trait='',limit=15):
-		if limit == None or limit < 1 or limit > 30: #validate limit
-			limit = 15
+		def __init__(self):
+			pass
 			
-		if trait == 'trending' or trait not in ['latest','must-read','discussions','jobs','companies']:
-			trait = ''
-			
-		posts = 0
-		#fetch limit posts from the trait page
-		while posts < limit :
-			soup = get_soup(page=trait)
-			print soup
-			break
-			
-		#pass the soup to post factory object
-	
-	def __repr__(self):
-		return '<GH object>'
+		def get_posts(self,trait='',limit=15):
+			if limit == None or limit < 1 or limit > 30: #validate limit
+				limit = 15
+				
+			if trait == 'trending' or trait not in ['latest','must-read','discussions','jobs','companies']:
+				trait = ''
+				
+			posts = 0
+			#fetch limit posts from the trait page
+			#while posts < limit :
+			#	break
+				
+			#pass the soup to post factory object
+		
+		def __repr__(self):
+			return '<GH object>'
 		
 		
-		
-		
-class Post(object):
+class Author(object):
 	"""
-	The class represents a post in GH
+	The class represents a user in GH
 	"""
 	
-	def __init__(self,title,date,category,author,type,link,details,comments):
-		self.title = title
-		self.category = category
-		self.author = author
-		self.type = type
-		self.link = link
-		self.details = details
-		self.comments = comments
+	def __init__(self,user_id,name,image_url):
+		self.user_id= user_id
+		self.name = name
+		self.image_url = image_url
 		
 	@classmethod
-	def from_soup(self,soup):
-		pass
+	def from_user_id(self,user_id):
+		soup = get_user_soup(user_id)
+		name = soup.find('h1',class_ = 'page-title').contents[0]
+		image_url = soup.find('img',class_='avatar').get('src')
+		return Author(user_id,name,image_url)
 		
 	def __repr__(self):
-		return '<Post : {0}>'.format(self.title)
+		return '<Author : {0}>'.format(self.user_id)		
 
 if __name__ == '__main__':
-	print GH()
-		
+	print Author.from_user_id('ryangum')
