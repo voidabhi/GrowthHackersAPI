@@ -57,7 +57,27 @@ class User(object):
 		return User(user_id,name,image_url)
 		
 	def __repr__(self):
-		return '<Author : {0}>'.format(self.user_id)		
+		return '<Author : {0}>'.format(self.user_id)
+
+class Category(object):
+	"""
+	The class represents a user in GH
+	"""
+	
+	def __init__(self,cat_id,title,url):
+		self.cat_id= cat_id
+		self.title = title
+		self.url = url
+		
+	@classmethod
+	def from_soup(self,soup):
+		cat_id = soup.find('a').get('href').split('=')[1]
+		title = soup.find('a').contents[0]
+		url = soup.find('a').get('href')
+		return Category(cat_id,title,url)
+		
+	def __repr__(self):
+		return '<Category : {0}>'.format(self.cat_id)			
 
 if __name__ == '__main__':
-	print User.from_user_id('ryangum')
+	print 'Growth Hackers'

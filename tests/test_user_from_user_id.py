@@ -21,7 +21,7 @@ class TestUserFromUserId(unittest.TestCase):
 	
 	def test_article_author_fields(self):
 		"""
-			Testing article author
+			Testing GH user
 		"""
 		self.assertEqual(self.author.user_id,'ryangum')
 		self.assertEqual(self.author.name,'Ryan Gum')
