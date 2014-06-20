@@ -10,8 +10,10 @@ Unofficial Python API for Growth Hackers
 
 import requests
 from bs4 import BeautifulSoup
+import re
 
 from utils import get_soup , get_user_soup
+
 
 class GH(object):
 		"""
@@ -77,7 +79,36 @@ class Category(object):
 		return Category(cat_id,title,url)
 		
 	def __repr__(self):
-		return '<Category : {0}>'.format(self.cat_id)			
+		return '<Category : {0}>'.format(self.cat_id)
+
+class Comment(object):
+	"""
+	The class represents a comment to a post in GH
+	"""
+	
+	def __init__(self,cmt_id,datetime,user,link,content,votes):
+		self.cmt_id= cmt_id
+		self.user = user
+		self.datetime = datetime
+		self.link = link
+		self.content = content
+		self.votes = votes
+		
+	@classmethod
+	def from_soup(self,soup):
+		# parses a single li element in commentlist ul
+		cmt_id = soup.find('li',class_='comment').get('id').split('-')[1]
+		datetime = soup.find('span',class_='comment-meta').contents[0].strip()
+		link= soup.find('span',class_='comment-meta').contents[1].get('href')
+		 # extracting with regexp
+		user_id = soup.find_all('cite',class_='fn')[1].contents[0]
+		user = user_id
+		content = soup.find('div','comment-content').find('p').contents[0].strip()
+		votes = soup.find('span',class_='com-score-%s'%cmt_id).contents[0]
+		return Comment(cmt_id,datetime,user,link,content,votes)
+		
+	def __repr__(self):
+		return '<Comment :#{0}>'.format(self.cmt_id)					
 
 if __name__ == '__main__':
-	print 'Growth Hackers'
+	print Comment.from_soup(get_soup('how-a-tiny-startup-used-reddit-to-build-an-army-of-1400-ambassadors-and-how-you-can-too/#comment-11694'))
