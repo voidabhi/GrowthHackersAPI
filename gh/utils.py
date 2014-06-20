@@ -15,4 +15,4 @@ def get_user_soup(user_id=''):
 	"""
 	Returns a bs4 object of the requested user
 	"""
-	return get_soup('member/%s'%user_id)
+	return get_soup(page='member/%s/'%user_id)

@@ -18,7 +18,7 @@ class TestCategoryFromSoup(unittest.TestCase):
 
 		self.category = Category.from_soup(BeautifulSoup(get_content('gh_category.html')))
 	
-	def test_article_author_fields(self):
+	def test_category_from_soup(self):
 		"""
 			Testing GH Category
 		"""
