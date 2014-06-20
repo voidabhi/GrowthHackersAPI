@@ -7,7 +7,7 @@ import sys
 import unittest
 
 from test_utils import get_content , PRESETS_DIR
-from gh import Author
+from gh import User
 
 import httpretty
 
@@ -17,7 +17,7 @@ class TestUserFromUserId(unittest.TestCase):
 		httpretty.HTTPretty.enable()
 		httpretty.register_uri(httpretty.HTTPretty.GET,'http://growthhackers.com/member/ryangum',body=get_content('gh_user.html'))
 
-		self.author = Author.from_user_id('ryangum')
+		self.author = User.from_user_id('ryangum')
 	
 	def test_article_author_fields(self):
 		"""

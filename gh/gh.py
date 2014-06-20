@@ -39,7 +39,7 @@ class GH(object):
 			return '<GH object>'
 		
 		
-class Author(object):
+class User(object):
 	"""
 	The class represents a user in GH
 	"""
@@ -54,10 +54,10 @@ class Author(object):
 		soup = get_user_soup(user_id)
 		name = soup.find('h1',class_ = 'page-title').contents[0]
 		image_url = soup.find('img',class_='avatar').get('src')
-		return Author(user_id,name,image_url)
+		return User(user_id,name,image_url)
 		
 	def __repr__(self):
 		return '<Author : {0}>'.format(self.user_id)		
 
 if __name__ == '__main__':
-	print Author.from_user_id('ryangum')
+	print User.from_user_id('ryangum')
