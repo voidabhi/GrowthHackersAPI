@@ -23,6 +23,12 @@ class TestPostFromPostId(unittest.TestCase):
 			Testing GH Post
 		"""
 		self.assertEqual(self.post.id,'the-ultimate-customer-loyalty-guidebook-6000-words')
+		self.assertEqual(self.post.title,'The Ultimate Customer Loyalty Guidebook (6000 words)')
+		self.assertEqual(self.post.url,'http://entrepreneurshipdaily.com/tips/how-to-increase-customer-retention-to-your-business/')
+		self.assertEqual(self.post.date,'June 25, 2014')
+		self.assertEqual(self.post.category.cat_id,'retention')
+		self.assertEqual(self.post.author,'anand')
+		self.assertEqual(self.post.votes,'5')
 	
 	def tearDown(self):
 		httpretty.HTTPretty.disable()
