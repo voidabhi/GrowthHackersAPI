@@ -106,9 +106,43 @@ class Comment(object):
 		content = soup.find('div','comment-content').find('p').contents[0].strip()
 		votes = soup.find('span',class_='com-score-%s'%cmt_id).contents[0]
 		return Comment(cmt_id,datetime,user,link,content,votes)
+	
 		
 	def __repr__(self):
-		return '<Comment :#{0}>'.format(self.cmt_id)					
+		return '<Comment :#{0}>'.format(self.cmt_id)
+
+class Post(object):
+	"""
+	The class represents a post in GH
+	"""
+	
+	def __init__(self,id,title,url,date,category,author_id,votes,comments):
+		self.id = id
+		self.title= title
+		self.url = url
+		self.date = date
+		self.category = category
+		self.author = author_id
+		self.votes = votes
+		self.comments = comments
+		
+	@classmethod
+	def from_post_id(self,post_id):
+		soup = get_soup(page = post_id)
+		title = soup.find('h1',class_='title post-item-title').find('a').contents[0]
+		url = soup.find('h1',class_='title post-item-title').find('a').get('href')
+		date = soup.find('span',class_='post-item-info').contents[0].split('in')[0].strip()
+		category = Category.from_soup(soup.find('span',class_='post-item-info'))
+		# todo = do this with regexp
+		author_id = soup.find('a',{'rel':'author'}).get('href').split('/')[-2]
+		votes = soup.find('div',class_='score2').find('p').contents[0]
+		# todo = comments
+		comments = ''
+		return Post(post_id,title,url,date,category,author_id,votes,comments)
+		
+	def __repr__(self):
+		return '<Post : {0}>'.format(self.id)		
 
 if __name__ == '__main__':
-	print User.from_user_id('ryangum').image_url
+	post = User.from_user_id('anand')
+	print post
