@@ -32,8 +32,8 @@ class GH(object):
 				
 			posts = 0
 			#fetch limit posts from the trait page
-			#while posts < limit :
-			#	break
+			soup = get_soup('')
+			print soup.find_all('post-item')
 				
 			#pass the soup to post factory object
 		
@@ -144,5 +144,4 @@ class Post(object):
 		return '<Post : {0}>'.format(self.id)		
 
 if __name__ == '__main__':
-	post = User.from_user_id('anand')
-	print post
+	posts = GH().get_posts()
