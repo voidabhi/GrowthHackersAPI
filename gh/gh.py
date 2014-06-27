@@ -33,7 +33,7 @@ class GH(object):
 			posts = 0
 			#fetch limit posts from the trait page
 			soup = get_soup('')
-			print soup.find_all('post-item')
+			print soup.find_all('div',class_='post-item')
 				
 			#pass the soup to post factory object
 		
