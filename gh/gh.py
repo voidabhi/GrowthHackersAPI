@@ -144,4 +144,5 @@ class Post(object):
 		return '<Post : {0}>'.format(self.id)		
 
 if __name__ == '__main__':
+	# test statement
 	posts = GH().get_posts()
