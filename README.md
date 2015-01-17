@@ -11,7 +11,7 @@ Unofficial python api of [Growth Hackers](http://www.growthhackers.com)
 Built With
 ==========
 
-`BeautifulSoup`
+`BeautifulSoup` `requests`
 
 LICENSE
 ================
