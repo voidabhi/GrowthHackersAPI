@@ -13,6 +13,9 @@ Built With
 
 `BeautifulSoup` `Requests`
 
+Developed By
+============
+
 LICENSE
 ================
 ```
