@@ -16,7 +16,7 @@ Built With
 Developed By
 ============
 
-Abhijeet Mohan
+`Abhijeet Mohan` - `void.aby@gmail.com`
 
 LICENSE
 ================
