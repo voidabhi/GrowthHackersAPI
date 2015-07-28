@@ -28,4 +28,5 @@ venv
 .tox
 nosetests.xml
 
+# Auto-Generated Files
 .DS_Store
