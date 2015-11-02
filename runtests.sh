@@ -1,3 +1,5 @@
+# shell script for running tests
+
 python setup.py develop
 pip install coveralls
 echo "======================================================================"
