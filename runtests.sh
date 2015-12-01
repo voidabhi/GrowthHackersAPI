@@ -1,6 +1,8 @@
 # shell script for running tests
 
 python setup.py develop
+
+# install coveralls
 pip install coveralls
 echo "======================================================================"
 echo
