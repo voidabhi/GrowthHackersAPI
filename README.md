@@ -1,16 +1,13 @@
-GrowthHackersAPI
-================
+### GrowthHackersAPI
 
 Unofficial python api of [Growth Hackers](http://www.growthhackers.com)
 
 
-Built With
-==========
+### Built With
 
 `BeautifulSoup` `Requests`
 
-Developed By
-============
+### Developed By
 
 `Abhijeet Mohan` - `void.aby@gmail.com`
 
@@ -19,8 +16,8 @@ Developed By
        src="http://data.pkmmte.com/temp/social_google_plus_logo.png" />
 </a>
 
-LICENSE
-================
+### LICENSE
+
 ```
 Copyright 2014 Abhijeet Mohan - https://github.com/voidabhi/GrowthHackersAPI
 
