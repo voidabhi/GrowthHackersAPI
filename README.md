@@ -16,6 +16,10 @@ Unofficial python api of [Growth Hackers](http://www.growthhackers.com)
        src="http://data.pkmmte.com/temp/social_google_plus_logo.png" />
 </a>
 
+### Contributing
+
+- Please use the [issue tracker](https://github.com/voidabhi/GrowthHackersAPI/issues) to report any bugs or file feature requests.
+
 ### LICENSE
 
 ```
