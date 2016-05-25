@@ -2,7 +2,7 @@
 Python API for Growth Hackers.
 
 @author Abhijeet Mohan
-@email abhijeetshibu@gmail.com
+@email void.aby@gmail.com
 """
 
 __title__ = 'Growth Hackers'
