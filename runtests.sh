@@ -1,5 +1,8 @@
 # shell script for running tests
 
+# activate virtualenv
+source venv/bin/activate
+
 python setup.py develop
 
 # install coveralls
