@@ -5,7 +5,7 @@ Unofficial python api of [Growth Hackers](http://www.growthhackers.com)
 
 ### Built With
 
-`BeautifulSoup` `Requests`
+`BeautifulSoup` `Requests` `Httpretty`
 
 ### Developed By
 
